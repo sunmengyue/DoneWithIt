@@ -1,5 +1,7 @@
 import { SafeAreaView, View, StyleSheet, Image } from 'react-native';
 
+import colors from '../config.js/colors';
+
 export default function ViewImageScreen() {
   return (
     <SafeAreaView style={styles.container}>
@@ -33,12 +35,12 @@ const styles = StyleSheet.create({
   loginBtn: {
     width: 50,
     height: 50,
-    backgroundColor: 'tomato'
+    backgroundColor: colors.primary
   },
   registerBtn: {
     width: 50,
     height: 50,
-    backgroundColor: 'lightseagreen'
+    backgroundColor: colors.secondary
   },
   chairImg: {
     width: '100%',
