@@ -18,11 +18,10 @@ const styles = StyleSheet.create({
   textContainer: {
     padding: 15
   },
-  text: {
-    paddingVertical: 5,
-    fontSize: 18
+  title: {
+    marginBottom: 7
   },
-  price: {
+  subTitle: {
     color: colors.secondary,
     fontWeight: 'bold'
   }

@@ -1,4 +1,5 @@
 import { View, Image, Text } from 'react-native';
+import AppText from '../AppText';
 import styles from './styles';
 export default function Card({ title, subTitle, image }) {
   return (
@@ -11,8 +12,8 @@ export default function Card({ title, subTitle, image }) {
         style={styles.cardImg}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{title}</Text>
-        <Text style={[styles.text, styles.price]}>{subTitle}</Text>
+        <AppText style={styles.title}>{title}</AppText>
+        <AppText style={styles.subTitle}>{subTitle}</AppText>
       </View>
     </View>
   );
