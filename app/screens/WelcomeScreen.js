@@ -1,5 +1,6 @@
 import { ImageBackground, StyleSheet, View, Text, Image } from 'react-native';
 import colors from '../config.js/colors';
+import AppBtn from '../components/AppBtn';
 
 function WelcomeScreen(props) {
   return (
@@ -9,11 +10,11 @@ function WelcomeScreen(props) {
     >
       <View style={styles.logoContainer}>
         <Image source={require('../assets/logo-red.png')} style={styles.logo} />
-        <Text>Sell What You Don't Need</Text>
+        <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
       <View style={styles.accountBtnContainer}>
-        <View style={styles.loginButton}></View>
-        <View style={styles.registerButton}></View>
+        <AppBtn color={colors.primary}>login</AppBtn>
+        <AppBtn color={colors.secondary}>Register</AppBtn>
       </View>
     </ImageBackground>
   );
@@ -22,6 +23,7 @@ function WelcomeScreen(props) {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center'
   },
@@ -31,21 +33,18 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   accountBtnContainer: {
-    width: '100%'
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 30
   },
   logo: {
     height: 100,
     width: 100
   },
-  loginButton: {
-    backgroundColor: colors.primary,
-    width: '100%',
-    height: 70
-  },
-  registerButton: {
-    backgroundColor: colors.secondary,
-    width: '100%',
-    height: 70
+  tagline: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 12
   }
 });
 
