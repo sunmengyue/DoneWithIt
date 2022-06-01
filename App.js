@@ -1,10 +1,7 @@
-import { View, StyleSheet } from 'react-native';
-import Card from './app/components/Card/Card';
-import DetailsListingScreen from './app/screens/DetailsListingScreen';
-// import WelcomeScreen from './app/screens/WelcomeScreen';
+import AccountScreen from './app/screens/AccountScreen';
 
 export default function App() {
-  return <DetailsListingScreen />;
+  return <AccountScreen />;
 }
 
 // const styles = StyleSheet.create({});

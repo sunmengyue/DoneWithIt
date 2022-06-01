@@ -1,36 +1,55 @@
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, TouchableHighlight } from 'react-native';
 import AppText from './AppText';
+import AppIcon from './AppIcon';
 import colors from '../config.js/colors';
 
-export default function ListingItem() {
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+
+export default function ListingItem({
+  title,
+  subtitle,
+  image,
+  ImageComponent,
+  onPress,
+  renderRightActions
+}) {
   return (
-    <View style={styles.sellerContainer}>
-      <Image
-        source={{
-          uri: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-        }}
-        style={styles.profilePhoto}
-      />
-      <View style={styles.listItemText}>
-        <AppText>Leo Smith</AppText>
-        <AppText style={styles.listItemSubtitle}>5 Listings</AppText>
-      </View>
-    </View>
+    <Swipeable renderRightActions={renderRightActions}>
+      <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
+        <View style={styles.itemContainer}>
+          {ImageComponent}
+          {image && <Image source={image} style={styles.image} />}
+          <View style={styles.listItemText}>
+            <AppText style={styles.listItemTitle}>{title}</AppText>
+            {subtitle && (
+              <AppText style={styles.listItemSubtitle}>{subtitle}</AppText>
+            )}
+          </View>
+        </View>
+      </TouchableHighlight>
+    </Swipeable>
   );
 }
 
 const styles = StyleSheet.create({
-  sellerContainer: {
-    flexDirection: 'row'
+  itemContainer: {
+    flexDirection: 'row',
+    padding: 15,
+    alignItems: 'center'
   },
-  profilePhoto: {
+  image: {
     width: 80,
     height: 80,
-    borderRadius: 40,
-    marginRight: 10
+    borderRadius: 40
+  },
+  listItemTitle: {
+    fontWeight: '800'
   },
   listItemSubtitle: {
     color: colors.medium,
     marginTop: 2
+  },
+  listItemText: {
+    marginLeft: 10
   }
 });

@@ -1,13 +1,16 @@
 import { SafeAreaView, View, StyleSheet, Image } from 'react-native';
-
-import colors from '../config.js/colors';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function ViewImageScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.accountBtnContainer}>
-        <View style={styles.loginBtn}></View>
-        <View style={styles.registerBtn}></View>
+        <MaterialCommunityIcons name='close' size={30} color='white' />
+        <MaterialCommunityIcons
+          name='trash-can-outline'
+          size={30}
+          color='white'
+        />
       </View>
       <Image
         source={require('../assets/chair.jpg')}
@@ -31,16 +34,6 @@ const styles = StyleSheet.create({
     top: 50,
     flexDirection: 'row',
     justifyContent: 'space-between'
-  },
-  loginBtn: {
-    width: 50,
-    height: 50,
-    backgroundColor: colors.primary
-  },
-  registerBtn: {
-    width: 50,
-    height: 50,
-    backgroundColor: colors.secondary
   },
   chairImg: {
     width: '100%',
