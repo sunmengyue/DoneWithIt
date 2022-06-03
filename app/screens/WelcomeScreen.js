@@ -1,5 +1,5 @@
 import { ImageBackground, StyleSheet, View, Text, Image } from 'react-native';
-import colors from '../config.js/colors';
+import colors from '../config/colors';
 import AppBtn from '../components/AppBtn';
 
 function WelcomeScreen(props) {
