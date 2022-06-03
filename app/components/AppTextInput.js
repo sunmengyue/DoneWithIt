@@ -3,7 +3,7 @@ import { View, StyleSheet, TextInput } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import defaultStyles from '../config/styles';
 
-function AppTextInput({ icon, ...otherProps }) {
+function AppTextInput({ icon, onChange, ...otherProps }) {
   return (
     <View style={styles.container}>
       {icon && (
@@ -14,7 +14,11 @@ function AppTextInput({ icon, ...otherProps }) {
           style={styles.icon}
         />
       )}
-      <TextInput style={defaultStyles.text} {...otherProps} />
+      <TextInput
+        style={defaultStyles.text}
+        onChangeText={onChange}
+        {...otherProps}
+      />
     </View>
   );
 }
