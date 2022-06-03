@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Formik } from 'formik';
 import { Image, StyleSheet } from 'react-native';
 import Screen from '../components/Screen';
 import AppTextInput from '../components/AppTextInput';
@@ -7,35 +8,43 @@ import AppBtn from '../components/AppBtn';
 import colors from '../config/colors';
 
 function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   return (
     <Screen>
       <Image source={require('../assets/logo-red.png')} style={styles.logo} />
-      <AppTextInput
-        autoCapitalize='none'
-        autoCorrect={false}
-        icon='email'
-        onChange={(text) => setEmail(text)}
-        placeholder='email'
-        keyboardType='email-address'
-        textContentType='emailAddress'
-      />
-      <AppTextInput
-        autoCapitalize='none'
-        autoCorrect={false}
-        icon='lock'
-        onChange={(password) => setPassword(password)}
-        placeholder='Password'
-        secureTextEntry
-        textContentType='password'
-      />
-      <AppBtn
-        color={colors.primary}
-        title='Login'
-        onPress={() => console.log(email, password)}
-        style={styles.btn}
-      />
+
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        onSubmit={(values) => console.log(values)}
+      >
+        {({ handleChange, handleSubmit }) => (
+          <>
+            <AppTextInput
+              autoCapitalize='none'
+              autoCorrect={false}
+              icon='email'
+              onChange={handleChange('email')}
+              placeholder='email'
+              keyboardType='email-address'
+              textContentType='emailAddress'
+            />
+            <AppTextInput
+              autoCapitalize='none'
+              autoCorrect={false}
+              icon='lock'
+              onChange={handleChange('password')}
+              placeholder='Password'
+              secureTextEntry
+              textContentType='password'
+            />
+            <AppBtn
+              color={colors.primary}
+              title='Login'
+              onPress={handleSubmit}
+              style={styles.btn}
+            />
+          </>
+        )}
+      </Formik>
     </Screen>
   );
 }
