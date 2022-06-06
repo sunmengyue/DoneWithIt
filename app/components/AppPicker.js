@@ -10,12 +10,12 @@ import {
 import Screen from './Screen';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import defaultStyles from '../config/styles';
-
 import AppText from './AppText';
 import PickerItem from './PickerItem';
 
 function AppPicker({ selectedItem, onSelectChange, icon, items, placeholder }) {
   const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
