@@ -17,6 +17,7 @@ function AppTextInput({ icon, onChange, ...otherProps }) {
       <TextInput
         style={defaultStyles.text}
         onChangeText={onChange}
+        placeholderTextColor={defaultStyles.colors.medium}
         {...otherProps}
       />
     </View>
