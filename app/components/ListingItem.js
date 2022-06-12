@@ -1,8 +1,9 @@
 import { View, Image, StyleSheet, TouchableHighlight } from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import AppText from './AppText';
 import colors from '../config/colors';
-
-import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 export default function ListingItem({
   title,
@@ -10,20 +11,34 @@ export default function ListingItem({
   image,
   ImageComponent,
   onPress,
-  renderRightActions
+  renderRightActions,
+  showChevrons
 }) {
   return (
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
         <View style={styles.itemContainer}>
-          {ImageComponent}
-          {image && <Image source={image} style={styles.image} />}
-          <View style={styles.listItemText}>
-            <AppText style={styles.listItemTitle}>{title}</AppText>
-            {subtitle && (
-              <AppText style={styles.listItemSubtitle}>{subtitle}</AppText>
-            )}
+          <View style={styles.contentContainer}>
+            {ImageComponent}
+            {image && <Image source={image} style={styles.image} />}
+            <View style={styles.listItemText}>
+              <AppText style={styles.listItemTitle} numberOfLines={1}>
+                {title}
+              </AppText>
+              {subtitle && (
+                <AppText style={styles.listItemSubtitle} numberOfLines={2}>
+                  {subtitle}
+                </AppText>
+              )}
+            </View>
           </View>
+          {showChevrons && (
+            <MaterialCommunityIcons
+              name='chevron-right'
+              size={25}
+              color={colors.medium}
+            />
+          )}
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -36,6 +51,7 @@ const styles = StyleSheet.create({
     padding: 15,
     alignItems: 'center'
   },
+  contentContainer: { flex: 1, flexDirection: 'row', alignItems: 'center' },
   image: {
     width: 80,
     height: 80,

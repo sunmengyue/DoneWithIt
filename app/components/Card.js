@@ -14,8 +14,12 @@ export default function Card({ title, subTitle, image }) {
         style={styles.cardImg}
       />
       <View style={styles.textContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+        <AppText style={styles.title} numberofLines={1}>
+          {title}
+        </AppText>
+        <AppText style={styles.subTitle} numberofLines={2}>
+          {subTitle}
+        </AppText>
       </View>
     </View>
   );
