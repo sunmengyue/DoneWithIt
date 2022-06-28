@@ -120,6 +120,7 @@ export default function ListingEditScreen() {
     </Screen>
   );
 }
+
 const styles = StyleSheet.create({
   btn: {
     alignSelf: 'center',

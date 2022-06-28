@@ -5,19 +5,25 @@ import ListingItem from '../components/ListingItem';
 
 import colors from '../config/colors';
 
-export default function DetailsListingScreen() {
+export default function DetailsListingScreen({ route }) {
+  const listing = route.params;
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         source={{
-          uri: 'https://images.unsplash.com/photo-1523364583621-23af08364dc7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'
+          uri: listing.imgUrl
         }}
       ></Image>
       <View style={styles.contentContainer}>
-        <AppText style={styles.title}>Red jacket for sale</AppText>
-        <AppText style={styles.price}>$100</AppText>
-        <ListingItem />
+        <AppText style={styles.title}>{listing.name}</AppText>
+        <AppText style={styles.price}>{listing.price}</AppText>
+        <ListingItem
+          title='Simon Sun'
+          subtitle='5 Listings'
+          image={require('../assets/profile.jpg')}
+          showChevrons
+        />
       </View>
     </View>
   );
