@@ -7,7 +7,7 @@ import Screen from '../components/Screen';
 import colors from '../config/colors';
 import AppIcon from '../components/AppIcon';
 import ListSeparator from '../components/ListSeparator';
-import navigationTheme from '../components/navigation/navigationTheme';
+import routes from '../components/navigation/routes';
 
 const initialUser = {
   image: require('../assets/profile.jpg'),
@@ -27,7 +27,7 @@ const listItems = [
     title: 'My Messages',
     iconName: 'email',
     iconColor: colors.secondary,
-    targetScreen: 'MessageStackScreen'
+    targetScreen: routes.MESSAGES
   }
 ];
 
