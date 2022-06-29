@@ -7,6 +7,7 @@ import Screen from '../components/Screen';
 import colors from '../config/colors';
 import AppIcon from '../components/AppIcon';
 import ListSeparator from '../components/ListSeparator';
+import navigationTheme from '../components/navigation/navigationTheme';
 
 const initialUser = {
   image: require('../assets/profile.jpg'),
@@ -25,11 +26,12 @@ const listItems = [
     id: 2,
     title: 'My Messages',
     iconName: 'email',
-    iconColor: colors.secondary
+    iconColor: colors.secondary,
+    targetScreen: 'MessageStackScreen'
   }
 ];
 
-export default function AccountScreen() {
+export default function AccountScreen({ navigation }) {
   const [user, setUser] = useState(initialUser);
 
   return (
@@ -57,6 +59,7 @@ export default function AccountScreen() {
                   backgroundColor={item.iconColor}
                 />
               }
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />
